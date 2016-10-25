@@ -1,30 +1,35 @@
 <div id="footer" data-animate="fadeInUp">
     <div class="container">
         <div class="row">
+          <div class="col-md-4 col-sm-6">
+
+              <h4>ABOUT US</h4>
+
+              <p class="text-muted">loakinAja adalah platform situs untuk menjual atau donasi barang bekas mulai dari koran, kardus, buku, baju, dan barang-barang lain.</p>
+            <hr>
+
+
+
+          </div>
             <div class="col-md-4 col-sm-6">
-                <h4>Pages</h4>
+                <h4>Halaman</h4>
 
                 <ul>
-                    <li><a href="#">About us</a>
+                    <li><a href="#">Karir</a>
                     </li>
-                    <li><a href="#">Terms and conditions</a>
+                    <li><a href="#">Mitra Kerja</a>
+                    </li>
+                    <li><a href="#">Kebijakan Privasi</a>
+                    </li>
+                    <li><a href="#">Syarat dan ketentuan</a>
                     </li>
                     <li><a href="#">FAQ</a>
                     </li>
-                    <li><a href="#">Contact us</a>
+                    <li><a href="#">Kontak</a>
                     </li>
                 </ul>
 
                 <hr>
-
-                <h4>User section</h4>
-
-                <ul>
-                    <li><a href="#" data-toggle="modal" data-target="#login-modal">Login</a>
-                    </li>
-                    <li><a href="<?php echo base_url()."index.php/main/register" ?>">Regiter</a>
-                    </li>
-                </ul>
 
                 <hr class="hidden-md hidden-lg hidden-sm">
 
@@ -34,45 +39,34 @@
 
             <div class="col-md-4 col-sm-6">
 
-                <h4>Where to find us</h4>
+                <h4>Temukan Kami</h4>
 
-                <p><strong>Obaju Ltd.</strong>
-                    <br>13/25 New Avenue
-                    <br>New Heaven
-                    <br>45Y 73J
-                    <br>England
-                    <br>
-                    <strong>Great Britain</strong>
+                <p>
+                    Jl. Gegerkalong Hilir, Desa Ciwaruga,
+                    Parongpong, Kabupaten Bandung Barat,
+                    Jawa Barat 40012,
+                    Indonesia
                 </p>
 
-                <a href="#">Go to contact page</a>
+                <a href="<?php echo base_url()."index.php/main/contact" ?>">Hubungi Kami</a>
 
                 <hr class="hidden-md hidden-lg">
+                <h4>Terhubung dengan kami</h4>
+
+                <p class="social">
+                    <a href="https://www.facebook.com/loakinaja" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
+                    <a href="https://twitter.com/loakinaja" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/loakinaja/" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
+                    <!-- <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a> -->
+                    <a href="mailto:info@loakinaja.com" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
+                </p>
 
             </div>
             <!-- /.col-md-3 -->
 
 
 
-            <div class="col-md-4 col-sm-6">
 
-                <h4>ABOUT US</h4>
-
-                <p class="text-muted">loakinAja adalah platform situs untuk menjual atau donasi barang bekas mulai dari koran, kardus, buku, baju, dan barang-barang lain.</p>
-              <hr>
-
-                <h4>Stay in touch</h4>
-
-                <p class="social">
-                    <a href="#" class="facebook external" data-animate-hover="shake"><i class="fa fa-facebook"></i></a>
-                    <a href="#" class="twitter external" data-animate-hover="shake"><i class="fa fa-twitter"></i></a>
-                    <a href="#" class="instagram external" data-animate-hover="shake"><i class="fa fa-instagram"></i></a>
-                    <a href="#" class="gplus external" data-animate-hover="shake"><i class="fa fa-google-plus"></i></a>
-                    <a href="#" class="email external" data-animate-hover="shake"><i class="fa fa-envelope"></i></a>
-                </p>
-
-
-            </div>
             <!-- /.col-md-3 -->
 
         </div>
@@ -109,22 +103,23 @@
                 <h4 class="modal-title" id="Login">Customer login</h4>
             </div>
             <div class="modal-body">
-                <form action="<?php echo base_url()."index.php/main/category" ?>" method="post">
+                <form action="<?php echo base_url()."index.php/user/login" ?>" method="post">
                     <div class="form-group">
-                        <input type="text" class="form-control" id="email-modal" placeholder="email">
+                        <input type="text" name="username" class="form-control" id="email-modal" placeholder="email">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" id="password-modal" placeholder="password">
+                        <input type="password" name="password" class="form-control" id="password-modal" placeholder="password">
                     </div>
 
+                    <?php echo "<alert>".$this->session->flashdata('pesan')."</alert>"; ?>
                     <p class="text-center">
-                        <button class="btn btn-primary"><i class="fa fa-sign-in"></i> Log in</button>
+                        <button class="btn btn-primary"><i class="fa fa-user"></i> Masuk</button>
                     </p>
 
                 </form>
 
-                <p class="text-center text-muted">Not registered yet?</p>
-                <p class="text-center text-muted"><a href="<?php echo base_url()."index.php/main/register" ?>"><strong>Register now</strong></a>! It is easy and done in 1&nbsp;minute and gives you access to buy and sell!</p>
+                <p class="text-center text-muted">Belum punya akun?</p>
+                <p class="text-center text-muted"><a href="<?php echo base_url()."index.php/main/register" ?>"><strong>Daftar</strong></a>! </p>
 
             </div>
         </div>

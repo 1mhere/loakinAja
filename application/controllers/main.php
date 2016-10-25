@@ -23,23 +23,33 @@ class Main extends CI_Controller {
 		$this->load->view('index');
 	}
 
-	public function register()
+	public function blog()
 	{
-		$this->load->view('register');
+		$this->load->view('blog');
+	}
+	public function bloglist()
+	{
+		$this->load->view('bloglist');
 	}
 
-	public function detail()
+	public function contact()
 	{
-		$this->load->view('detail');
+		$this->load->view('contact');
 	}
 
-	public function basket()
+	public function faq()
 	{
-		$this->load->view('basket');
+		$this->load->view('faq');
 	}
-	public function category()
+
+	public function about()
 	{
-		$this->load->view('category');
+		$this->load->view('about');
+	}
+
+	public function gabung()
+	{
+		$this->load->view('mitra');
 	}
 
 }
