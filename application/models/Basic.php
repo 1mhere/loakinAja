@@ -18,5 +18,24 @@ class Basic extends CI_Model {
 		return $res;
 	}
 
+	public function GetHistory($usr=""){
+		$data = $this->db->query('select * from barang where username ="'.$usr.'" order by tanggal');
+		return $data->result_array();
+	}
+
+	public function GetDetail($usr="",$id=""){
+		$data = $this->db->query('select * from barang where username ="'.$usr.'" and  id_barang = '.$id.' order by tanggal');
+		return $data->result_array();
+	}
+
+	public function GetJenis(){
+		$data = $this->db->query('select * from jenis');
+		return $data->result_array();
+	}
+
+	public function GetHarga($id){
+		$data = $this->db->query('select harga from jenis where id_jenis = '.$id);
+		return $data->result_array();
+	}
 
 }

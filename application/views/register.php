@@ -76,21 +76,7 @@
                         <p class="text-muted"></p>
 
                         <hr>
-
-                        <!-- <form action="<?php echo base_url()."index.php/main" ?>" method="post">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="text" class="form-control" id="email">
-                            </div>
-                            <div class="form-group">
-                                <label for="password">Kata Sandi</label>
-                                <input type="password" class="form-control" id="password">
-                            </div>
-                            <div class="text-center">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-sign-in"></i>Masuk</button>
-                            </div>
-                        </form> -->
-                        <a href="<?php echo base_url()."index.php/user/loginMember" ?>" class="btn btn-primary navbar-btn"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-sm">Masuk</span></a>
+                        <a href="<?php echo base_url()."index.php/user/masuk" ?>" class="btn btn-primary navbar-btn"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-sm">Masuk</span></a>
 
                     </div>
                 </div>

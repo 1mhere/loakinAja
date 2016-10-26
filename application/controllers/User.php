@@ -77,7 +77,6 @@ class User extends Main{
 		// var_dump($cek_login);exit;
     if(!empty($cek_login)){
       $ambil = $cek_login[0];
-      // if($u == $ambil->username && $p== $ambil->password){
         $sess = array(
 						'name' => $ambil->name,
 						'username' => $ambil->username,
@@ -90,7 +89,7 @@ class User extends Main{
 
 				redirect("user/account");
     }else{
-      $this->session->set_flashdata('pesan','Incorrect Username/password');
+      $this->session->set_flashdata('error','Username/password salah');
     	redirect("user/account");
     }
   }
@@ -100,25 +99,111 @@ class User extends Main{
 			redirect();
 	}
 
-	public function loginMember()
+	public function masuk()
 	{
-		$this->load->view('login_member');
+		$this->load->view('masuk');
 	}
 
-	public function loginAdmin()
+	public function account()
 	{
-		$this->load->view('login_admin');
+		// var_dump($this->session->userdata('username'));
+		// exit;
+		$cek= $this->session->userdata('username');
+		if(!empty($cek)){
+			$this->load->view('account');
+		}else
+			redirect("user/masuk");
 	}
 
 
+	public function account_edit()
+	{
+		// var_dump($this->session->userdata('username'));
+		// exit;
+		$cek= $this->session->userdata('username');
+		if(!empty($cek)){
+			$this->load->view('account_edit.php');
+		}else
+			redirect("user/masuk");
+	}
+
+	public function change_pass(){
+		$username= $this->session->userdata('username');
+		$newpass= $_POST['newpass'];
+		$confirm = $_POST['confirm'];
+		$pass = md5($_POST['password']);
+
+    $cek_login = $this->db->get_where('user',array('username' => $username, 'password'=> $pass))->result();
+
+		// var_dump($cek_login);exit;
+    if(!empty($cek_login)){
+			if($newpass != ""){
+				if($newpass == $confirm){
+					$data_update = array(
+							'password' => md5($newpass)
+						);
+					$where = array('username' => $username);
+					$res = $this->Basic->UpdateData('user',$data_update,$where);
+					if($res>=1){
+						$this->session->set_flashdata('pesan','Ganti Kata Sandi Berhasil');
+						redirect('user/account');
+					}
+				}else{
+					$this->session->set_flashdata('pesan','Gagal : Kata sandi baru tidak sama');
+					redirect('user/account');
+				}
+			}else{
+				$this->session->set_flashdata('pesan','Gagal : Kata Sandi tidak bisa kosong');
+				redirect('user/account');
+			}
+		}else{
+			$this->session->set_flashdata('pesan','Gagal : Kata Sandi lama salah');
+			redirect('user/account');
+		}
+	}
+
+	public function change_profil(){
+		$username = $this->session->userdata('username');
+		$name = $_POST['name'];
+		$email = $_POST['email'];
+		$phone = $_POST['phone'];
+		$address = $_POST['address'];
+
+    $cek_login = $this->db->get_where('user',array('username' => $username))->result();
+
+		// var_dump($cek_login);exit;
+    if(!empty($cek_login)){
+					$data_update = array(
+							'name' => $name,
+							'username' => $username,
+							'email' => $email,
+							'phone' => $phone,
+							'alamat' => $address,
+							'status' =>  $this->session->userdata('status'),
+						);
+					$where = array('username' => $username);
+					$res = $this->Basic->UpdateData('user',$data_update,$where);
+					// var_dump($data_update);exit;
+					if($res>=1){
+						$this->session->set_userdata($data_update);
+						$this->session->set_flashdata('pesan','Data berhasil diperbarui');
+						redirect('user/account');
+					}
+		}else{
+			$this->session->set_flashdata('pesan','Gagal Memperbarui Data');
+			redirect('user/account_edit');
+		}
+	}
 
 	public function jual()
 	{
-		$cek= $this->session->userdata('username');
-		if(!empty($cek)){
-			$this->load->view('jual');
+		$username= $this->session->userdata('username');
+		if(!empty($username)){
+			$data['data'] = $this->Basic->GetJenis();
+			// var_dump($data);exit;
+			$this->load->view('jual',$data);
 		}else
-			redirect("user/loginMember");
+			redirect("user/masuk");
 	}
 
 	public function do_jual()
@@ -130,6 +215,9 @@ class User extends Main{
 			$berat = $_POST['berat'];
 			$lokasi = $_POST['lokasi'];
 			$ket = $_POST['keterangan'];
+			$getHarga = $this->Basic->Getharga($jenis);
+			$hargaKg = $getHarga[0]['harga'];
+			// var_dump($hargaKg);exit;
 
 			$data_insert = array(
           'username' => $username,
@@ -137,20 +225,20 @@ class User extends Main{
           'berat' => $berat,
 					'tanggal' => date('Y-m-d'),
 					'keterangan' => $ket,
-					'price' => $berat*2500,
+					'harga' => $berat*$hargaKg,
 					'lokasi' => $lokasi,
       );
       $res = $this->Basic->InsertData('barang',$data_insert);
       if($res>0){
         $this->session->set_flashdata('pesan','Berhasil');
-				$data['data'] = $berat*2500;
+				$data['data'] = $berat*$hargaKg;
         	$this->load->view('thanks',$data);
       }else{
         $this->session->set_flashdata('pesan','Gagal');
         redirect('user/jual');
       }
 		}else
-			redirect("user/loginMember");
+			redirect("user/masuk");
 	}
 
 	public function donasi()
@@ -159,7 +247,7 @@ class User extends Main{
 		if(!empty($cek)){
 			$this->load->view('donasi');
 		}else
-			redirect("user/loginMember");
+			redirect("user/masuk");
 	}
 
 	public function do_donasi()
@@ -178,7 +266,7 @@ class User extends Main{
           'berat' => $berat,
 					'tanggal' => date('d/m/20y'),
 					'keterangan' => $ket,
-					'price' => 0,
+					'harga' => 0,
 					'lokasi' => $lokasi,
       );
       $res = $this->Basic->InsertData('barang',$data_insert);
@@ -191,39 +279,34 @@ class User extends Main{
         redirect('user/jual');
       }
 		}else
-			redirect("user/loginMember");
+			redirect("user/masuk");
 	}
 
 	public function history()
 	{
-		$cek= $this->session->userdata('username');
-		if(!empty($cek)){
-			$this->load->view('history');
+		$username= $this->session->userdata('username');
+		if(!empty($username)){
+			$data['data'] = $this->Basic->GetHistory($username);
+			// var_dump($data);exit;
+			$this->load->view('history',$data);
 		}else
-			redirect("user/loginMember");
+			redirect("user/masuk");
 	}
 
-	public function detail()
+	public function detail($id)
 	{
-		$cek= $this->session->userdata('username');
-		if(!empty($cek)){
-			$this->load->view('detail');
+		$username= $this->session->userdata('username');
+		if(!empty($username)){
+			$data['data'] = $this->Basic->GetDetail($username,$id);
+			// var_dump($data);exit;
+			$this->load->view('detail',$data);
 		}else
-			redirect("user/loginMember");
+			redirect("user/masuk");
 	}
 
-	public function account()
-	{
-		// var_dump($this->session->userdata('username'));
-		// exit;
-		$cek= $this->session->userdata('username');
-		if(!empty($cek)){
-			$this->load->view('account');
-		}else
-			redirect("user/loginMember");
-	}
 	public function thanks()
 	{
 		$this->load->view('thanks');
 	}
+
 }

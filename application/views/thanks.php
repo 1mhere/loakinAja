@@ -33,7 +33,21 @@
                                     <img src="<?php echo base_url()."assets/img/logo.png" ?>" alt="Obaju template">
                                 </p>
 
+
+                                <?php
+                                if($data==0){
+                                  ?>
+                                    <p class="lead">Terimakasih Atas Donasi Anda</p>
+                                  <?php
+                                }else{
+                                ?>
+                                <p class="text-muted">Uang Yang akan Anda peroleh : </p>
+                                <p class="lead"><?php echo $data; ?></p>
                                 <h3>Terimakasih Telah mempercayai kami</h3>
+                                <?php
+                                  }
+                                ?>
+
 
                                 <p class="buttons"><a href="<?php echo base_url()."index.php/main" ?>" class="btn btn-primary"><i class="fa fa-home"></i> Go to Homepage</a>
                                 </p>

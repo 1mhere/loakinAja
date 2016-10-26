@@ -67,6 +67,7 @@
                                 <label for="keterangan">Keterangan</label>
                                 <input type="text" class="form-control" name="keterangan">
                             </div>
+                            <?php echo "<alert>".$this->session->flashdata('pesan')."</alert>"; ?>
                             <div class="text-center">
                                 <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i>Jual</button>
                             </div>
@@ -86,46 +87,15 @@
                             <th>Jenis</th>
                             <th>Harga/kg</th>
                           </tr>
+                          <?php
+                          foreach ($data as $d) {
+                            ?>
                           <tr>
-                            <td>1.</td>
-                            <td>Besi</td>
-                            <td>Rp. 2.500,-</td>
+                            <td><?php echo  $d['id_jenis']; ?></td>
+                            <td><?php echo  $d['nama']; ?></td>
+                            <td>Rp. <?php echo  $d['harga']; ?>,-</td>
                           </tr>
-                          <tr>
-                            <td>2.</td>
-                            <td>Gelas Bening</td>
-                            <td>Rp. 2.500,-</td>
-                          </tr>
-                          <tr>
-                            <td>3.</td>
-                            <td>Botol Plastik</td>
-                            <td>Rp. 3.500,-</td>
-                          </tr>
-                          <tr>
-                            <td>4.</td>
-                            <td>Kardus</td>
-                            <td>Rp. 2.500,-</td>
-                          </tr>
-                          <tr>
-                            <td>5.</td>
-                            <td>Buku Campur</td>
-                            <td>Rp. 1.300,-</td>
-                          </tr>
-                          <tr>
-                            <td>6.</td>
-                            <td>Beling Bening</td>
-                            <td>Rp. 1.000,-</td>
-                          </tr>
-                          <tr>
-                            <td>7.</td>
-                            <td>Kertas HVS/SWL</td>
-                            <td>Rp. 2.500,-</td>
-                          </tr>
-                          <tr>
-                            <td>8.</td>
-                            <td>Koran Bekas</td>
-                            <td>Rp. 2.900,-</td>
-                          </tr>
+                          <?php } ?>
                         </table>
                       </div>
                 <!-- /.box-body -->

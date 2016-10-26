@@ -38,15 +38,23 @@
                      <div class="panel-body">
                          <ul class="nav nav-pills nav-stacked">
                            <li>
-                               <a href="<?php echo base_url()."index.php/main/about" ?>">Tim LoakinAja.com</a>
+                               <a href="<?php echo base_url()."index.php/user/account" ?>"><i class="fa fa-user"></i> Profil</a>
+                           </li>
+                           <li>
+                             <a href="<?php echo base_url()."index.php/user/history" ?>" ><i class="fa fa-list"></i>History</a>
+                           </li>
+                           <li>
+                               <a href="<?php echo base_url()."index.php/main/about" ?>" ><i class="fa fa-users"></i>Tim LoakinAja.com</a>
                            </li>
                              <li>
-                                 <a href="<?php echo base_url()."index.php/main/contact" ?>">Kontak</a>
+                                 <a href="<?php echo base_url()."index.php/main/contact" ?>"> <i class="fa fa-phone"></i>Kontak</a>
                              </li>
                              <li>
-                                 <a href="<?php echo base_url()."index.php/main/faq" ?>">FAQ</a>
+                                 <a href="<?php echo base_url()."index.php/main/faq" ?>" ><i class="fa fa-tasks"></i>FAQ</a>
                              </li>
-
+                             <li>
+                                 <a href="<?php echo base_url()."index.php/user/logout" ?>"><i class="fa fa-sign-out"></i> Keluar</a>
+                             </li>
                          </ul>
 
                      </div>
@@ -62,74 +70,24 @@
                         <p class="lead">Ubah data pribadi kamu dan kata sandi kamu disini</p>
                         <p class="text-muted">harap isi dan perbaharui dengan benar untuk kelancaran transaksi dengan kami.</p>
 
-                        <h3>Ubah Kata sandi</h3>
-
-                        <form>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="password_old">Kata sandi lama</label>
-                                        <input type="password" class="form-control" name="password_old">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="password_1">Kata sandi baru</label>
-                                        <input type="password" class="form-control" name="password_1">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="password_2">Ulang kata sandi</label>
-                                        <input type="password" class="form-control" id="password_2">
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- /.row -->
-
-                            <div class="col-sm-12 text-center">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>Simpan</button>
-                            </div>
-                        </form>
-
-                        <hr>
-
                         <h3>Data Pribadi</h3>
-                        <form>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="firstname">Nama lengkap</label>
-                                        <input type="text" class="form-control" name="name">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="city">Alamat</label>
-                                        <input type="text" class="form-control" name="address">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="phone">Telephone</label>
-                                        <input type="text" class="form-control" name="phone">
-                                    </div>
-                                </div>
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="email">Email</label>
-                                        <input type="text" class="form-control" name="email">
-                                    </div>
-                                </div>
-                                <div class="col-sm-12 text-center">
-                                    <button type="submit" class="btn btn-primary"><i class="fa fa-save"></i>Simpan</button>
-
-                                </div>
-                            </div>
-                        </form>
+                        <p class="text-muted">Nama : </p>
+                        <p class="lead"><?php echo $this->session->userdata('name'); ?></p>
+                        <p class="text-muted">Username : </p>
+                        <p class="lead"><?php echo $this->session->userdata('username'); ?></p>
+                        <p class="text-muted">Email : </p>
+                        <p class="lead"><?php echo $this->session->userdata('email'); ?></p>
+                        <p class="text-muted">Nomor Telepon : </p>
+                        <p class="lead"><?php echo $this->session->userdata('phone'); ?></p>
+                        <p class="text-muted">Alamat :</p>
+                        <p class="lead"><?php echo $this->session->userdata('alamat'); ?></p>
+                        <br> <br>
+                        <div class="text-center">
+                              <a href="<?php echo base_url()."index.php/user/account_edit" ?>" class="btn btn-primary"><i class="fa fa-edit" aria-hidden="true"></i><span class="hidden-sm">Edit Profil</span></a>
+                        </div>
+                        <br> <br>
                     </div>
+
                 </div>
 
             </div>

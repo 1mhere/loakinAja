@@ -16,7 +16,7 @@
                   $cek= $this->session->userdata('username');
                   if(empty($cek)){
                 ?>
-                <a class="btn btn-default navbar-toggle" href="<?php echo base_url()."index.php/user/loginMember" ?>">
+                <a class="btn btn-default navbar-toggle" href="<?php echo base_url()."index.php/user/masuk" ?>">
                     <i class="fa fa-user"></i>  <span class="hidden-xs">Masuk</span>
                 </a>
                 <a class="btn btn-default navbar-toggle" href="<?php echo base_url()."index.php/user/register" ?>">
@@ -149,7 +149,7 @@
 
             <div class="navbar-collapse collapse right" id="donate">
                   <!-- <a  href="#" data-toggle="modal" data-target="#login-modal" class="btn btn-primary navbar-btn"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-sm">Masuk</span></a> -->
-                  <a href="<?php echo base_url()."index.php/user/loginMember" ?>" class="btn btn-primary navbar-btn"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-sm">Masuk</span></a>
+                  <a href="<?php echo base_url()."index.php/user/masuk" ?>" class="btn btn-primary navbar-btn"><i class="fa fa-user" aria-hidden="true"></i><span class="hidden-sm">Masuk</span></a>
             </div>
           <?php
         }else{ ?>

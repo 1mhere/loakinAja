@@ -32,19 +32,31 @@
                     <div class="panel panel-default sidebar-menu">
 
                         <div class="panel-heading">
-                            <h3 class="panel-title">Customer section</h3>
+                            <h3 class="panel-title">Halaman</h3>
                         </div>
 
                         <div class="panel-body">
-
                             <ul class="nav nav-pills nav-stacked">
+                              <li>
+                                  <a href="<?php echo base_url()."index.php/user/account" ?>"><i class="fa fa-user"></i> Profil</a>
+                              </li>
+                              <li>
+                                <a href="<?php echo base_url()."index.php/user/history" ?>" ><i class="fa fa-list"></i>History</a>
+                              </li>
+                              <li>
+                                  <a href="<?php echo base_url()."index.php/main/about" ?>" ><i class="fa fa-users"></i>Tim LoakinAja.com</a>
+                              </li>
                                 <li>
-                                    <a href="<?php echo base_url()."index.php/user/account" ?>"><i class="fa fa-user"></i> Profil</a>
+                                    <a href="<?php echo base_url()."index.php/main/contact" ?>"> <i class="fa fa-phone"></i>Kontak</a>
                                 </li>
                                 <li>
-                                    <a href="<?php echo base_url()."index.php/main" ?>"><i class="fa fa-sign-out"></i> Keluar</a>
+                                    <a href="<?php echo base_url()."index.php/main/faq" ?>" ><i class="fa fa-tasks"></i>FAQ</a>
+                                </li>
+                                <li>
+                                    <a href="<?php echo base_url()."index.php/user/logout" ?>"><i class="fa fa-sign-out"></i> Keluar</a>
                                 </li>
                             </ul>
+
                         </div>
 
                     </div>
@@ -66,58 +78,27 @@
                                 <thead>
                                     <tr>
                                         <th>ID Transaksi</th>
-                                        <th>Date</th>
-                                        <th>Total</th>
+                                        <th>Tanggal</th>
+                                        <th>Harga</th>
                                         <th>Status</th>
-                                        <th>Action</th>
+                                        <th>Detail</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+                                  <?php
+                                  foreach ($data as $d) {
+              		                  ?>
                                     <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>$ 150.00</td>
-                                        <td><span class="label label-info">Being prepared</span>
+                                        <th><?php echo $d['id_barang']; ?></th>
+                                        <td><?php echo $d['tanggal']; ?></td>
+                                        <td><?php echo $d['harga']; ?></td>
+                                        <td><span class="label label-succes"><?php echo $d['status']; ?></span>
                                         </td>
-                                        <td><a href="#" class="btn btn-primary btn-sm">View</a>
+                                        <td><a href="<?php echo base_url()."index.php/user/detail/".$d['id_barang'] ?>" class="btn btn-primary btn-sm">View</a>
                                         </td>
                                     </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>$ 150.00</td>
-                                        <td><span class="label label-info">Being prepared</span>
-                                        </td>
-                                        <td><a href="#" class="btn btn-primary btn-sm">View</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>$ 150.00</td>
-                                        <td><span class="label label-success">Received</span>
-                                        </td>
-                                        <td><a href="#" class="btn btn-primary btn-sm">View</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>$ 150.00</td>
-                                        <td><span class="label label-danger">Cancelled</span>
-                                        </td>
-                                        <td><a href="#" class="btn btn-primary btn-sm">View</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <th># 1735</th>
-                                        <td>22/06/2013</td>
-                                        <td>$ 150.00</td>
-                                        <td><span class="label label-warning">On hold</span>
-                                        </td>
-                                        <td><a href="#" class="btn btn-primary btn-sm">View</a>
-                                        </td>
-                                    </tr>
+                                    <?php } ?>
+                                    <td></td>
                                 </tbody>
                             </table>
                         </div>
