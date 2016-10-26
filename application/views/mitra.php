@@ -36,27 +36,34 @@
 
                         <hr>
 
-                        <form action="<?php echo base_url()."index.php/user/thanks" ?>" method="post">
+                        <form action="<?php echo base_url()."index.php/mitra/do_join" ?>" method="post">
                           <div class="form-group">
                               <label for="berat">Nama Mitra</label>
-                              <input type="text" class="form-control" id="email">
-
+                              <input type="text" class="form-control" name="name">
                           </div>
-
+                          <div class="form-group">
+                              <label for="berat">Username</label>
+                              <input type="text" class="form-control" name="username">
+                          </div>
+                          <div class="form-group">
+                              <label for="berat">Password</label>
+                              <input type="password" class="form-control" name="password">
+                          </div>
+                          <div class="form-group">
+                              <label for="berat">Email</label>
+                              <input type="email" class="form-control" name="email">
+                          </div>
                             <div class="form-group">
-                                <label for="berat">Nomor Telepon </label>
-                                <input type="phone" class="form-control" id="email">
+                                <label for="berat">Nomor Telepon</label>
+                                <input type="number" class="form-control" name="phone">
                             </div>
                             <div class="form-group">
                                 <label for="text">Alamat</label>
-                                <input type="text" class="form-control" id="password">
+                                <input type="text" class="form-control" name="address">
                             </div>
-                            <div class="form-group">
-                                <label for="keterangan">Keterangan</label>
-                                <input type="text" class="form-control" id="password">
-                            </div>
+                            <?php echo "<alert>".$this->session->flashdata('pesan')."</alert>"; ?>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Bergabung</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i>Bergabung</button>
                             </div>
                         </form>
                     </div>

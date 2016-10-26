@@ -34,7 +34,7 @@
                     <div class="col-sm-8">
                       <div class="navbar-buttons">
                         <div class="navbar-collapse collapse right" id="join">
-                              <a href="<?php echo base_url()."index.php/main/gabung" ?>" class="btn btn-primary navbar-btn"><i class="fa fa-users"></i><span class="hidden-sm">Mitra Kerja</span></a>
+                              <a href="<?php echo base_url()."index.php/mitra" ?>" class="btn btn-primary navbar-btn"><i class="fa fa-users"></i><span class="hidden-sm">Mitra Kerja</span></a>
                         </div>
                         <div class="navbar-collapse collapse right" id="donate">
                               <a href="<?php echo base_url()."index.php/user/donasi" ?>" class="btn btn-primary navbar-btn"><i class="fa fa-heart"></i><span class="hidden-sm">Donasi</span></a>

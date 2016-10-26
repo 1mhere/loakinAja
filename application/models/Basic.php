@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Db_model extends CI_Model {
+class Basic extends CI_Model {
 
 	public function InsertData($tabelName,$data){
 		$res = $this->db->insert($tabelName,$data);

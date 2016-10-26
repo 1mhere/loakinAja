@@ -2,22 +2,33 @@
     <div class="container">
         <div class="navbar-header">
 
-            <a class="navbar-brand home" href="<?php echo base_url()."index.php/main" ?>" data-animate-hover="bounce">
-                <img src="<?php echo base_url()."assets/img/logo.png"?>" alt="Obaju logo" class="hidden-xs">
-                <img src="<?php echo base_url()."assets/img/logo-small.png" ?>" alt="Obaju logo" class="visible-xs"><span class="sr-only">loakinAja - go to home page</span>
-            </a>
+
             <div class="navbar-buttons">
+              <a class="navbar-brand home" href="<?php echo base_url()."index.php/main" ?>" data-animate-hover="bounce">
+                  <img src="<?php echo base_url()."assets/img/logo.png"?>" alt="loakinAja logo" class="hidden-xs">
+                  <img src="<?php echo base_url()."assets/img/logo-small.png" ?>" alt="loakinAja logo" class="visible-xs"><span class="sr-only">loakinAja - go to home page</span>
+              </a>
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">
                     <span class="sr-only">Toggle navigation</span>
                     <i class="fa fa-align-justify"></i>
                 </button>
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#search">
-                    <span class="sr-only">Toggle search</span>
-                    <i class="fa fa-search"></i>
-                </button>
-                <a class="btn btn-default navbar-toggle" href="<?php echo base_url()."index.php/main" ?>">
-                    <i class="fa fa-shopping-cart"></i>  <span class="hidden-xs">Jual</span>
+                <?php
+                  $cek= $this->session->userdata('username');
+                  if(empty($cek)){
+                ?>
+                <a class="btn btn-default navbar-toggle" href="<?php echo base_url()."index.php/user/loginMember" ?>">
+                    <i class="fa fa-user"></i>  <span class="hidden-xs">Masuk</span>
                 </a>
+                <a class="btn btn-default navbar-toggle" href="<?php echo base_url()."index.php/user/register" ?>">
+                    <i class="fa fa-sign-in"></i>  <span class="hidden-xs">Daftar</span>
+                </a>
+                <?php
+              }else{ ?>
+                <a class="btn btn-default navbar-toggle" href="<?php echo base_url()."index.php/user/logout" ?>">
+                    <i class="fa fa-sign-out"></i>  <span class="hidden-xs">Daftar</span>
+                </a>
+              <?php
+              } ?>
             </div>
         </div>
         <!--/.navbar-header -->

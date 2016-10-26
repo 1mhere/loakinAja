@@ -1,7 +1,8 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+include_once (dirname(__FILE__) . "/Main.php");
 
-class User extends CI_Controller {
+class User extends Main{
 
 	/**
 	 * Index Page for this controller.
@@ -18,6 +19,7 @@ class User extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
 	public function index()
 	{
 		$this->load->view('index');
@@ -44,9 +46,10 @@ class User extends CI_Controller {
               'email' => $email,
               'phone' => $phone,
 							'alamat' => $address,
-              'password' => md5($password)
+              'password' => md5($password),
+							'status' => 2
           );
-          $res = $this->db_model->InsertData('user',$data_insert);
+          $res = $this->Basic->InsertData('user',$data_insert);
           if($res>0){
             $this->session->set_userdata($data_insert);
             $this->session->set_flashdata('pesan','Pendaftaran Berhasil');
@@ -60,7 +63,7 @@ class User extends CI_Controller {
         redirect('user/register');
       }
     }else{
-      $this->session->set_flashdata('pesan','Form Nama, username, phone dan password harus di isi, mohon diisi dengan benar');
+      $this->session->set_flashdata('pesan','Form Nama, username, nomor telepon dan password harus di isi, mohon diisi dengan benar');
       redirect('user/register');
     }
 	}
@@ -101,19 +104,13 @@ class User extends CI_Controller {
 	{
 		$this->load->view('login_member');
 	}
-	public function loginMitra()
-	{
-		$this->load->view('login_mitra');
-	}
+
 	public function loginAdmin()
 	{
 		$this->load->view('login_admin');
 	}
 
-	public function blog()
-	{
-		$this->load->view('blog_c');
-	}
+
 
 	public function jual()
 	{
@@ -138,12 +135,12 @@ class User extends CI_Controller {
           'username' => $username,
           'jenis' => $jenis,
           'berat' => $berat,
-					'tanggal' => date('d/m/20y'),
+					'tanggal' => date('Y-m-d'),
 					'keterangan' => $ket,
 					'price' => $berat*2500,
 					'lokasi' => $lokasi,
       );
-      $res = $this->db_model->InsertData('barang',$data_insert);
+      $res = $this->Basic->InsertData('barang',$data_insert);
       if($res>0){
         $this->session->set_flashdata('pesan','Berhasil');
 				$data['data'] = $berat*2500;
@@ -184,7 +181,7 @@ class User extends CI_Controller {
 					'price' => 0,
 					'lokasi' => $lokasi,
       );
-      $res = $this->db_model->InsertData('barang',$data_insert);
+      $res = $this->Basic->InsertData('barang',$data_insert);
       if($res>0){
         $this->session->set_flashdata('pesan','Berhasil');
 				$data['data'] = 0;

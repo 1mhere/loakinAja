@@ -86,7 +86,8 @@ h1 {
   font-weight: 400;
   text-transform: uppercase;
   padding-bottom: 10px;
-  border-bottom: dotted 1px #555555;
+  border-bottom: dotted 1px #eee;
+  color : #ddd;
 }
 @media (max-width: 767px) {
   .navbar .yamm-content h5 {
@@ -1282,7 +1283,7 @@ h1 {
 }
 .navbar-default .navbar-toggle:hover,
 .navbar-default .navbar-toggle:focus {
-  background-color: #dddddd;
+  background-color: #C4AB00;
 }
 .navbar-default .navbar-toggle .icon-bar {
   background-color: #888888;
@@ -1387,7 +1388,7 @@ hr {
 .btn-primary {
   color: #333;
   background-color: #E3BB11;
-  border-color: #fed136;
+  border-color: #E3BB11;
 }
 .btn-primary:hover,
 .btn-primary:focus,
@@ -1395,8 +1396,8 @@ hr {
 .btn-primary.active,
 .open .dropdown-toggle.btn-primary {
   color: #333;
-  background-color: #3da892;
-  border-color: #318675;
+  background-color: #C4AB00;
+  border-color: #C4AB00;
 }
 .btn-primary:active,
 .btn-primary.active,
@@ -1419,7 +1420,7 @@ fieldset[disabled] .btn-primary:active,
 .btn-primary[disabled].active,
 fieldset[disabled] .btn-primary.active {
   background-color: #E3BB11;
-  border-color: #fed136;
+  border-color: #E3BB11;
 }
 .btn-primary .badge {
   color: #E3BB11;

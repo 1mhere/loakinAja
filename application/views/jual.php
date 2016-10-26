@@ -68,7 +68,7 @@
                                 <input type="text" class="form-control" name="keterangan">
                             </div>
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i> Jual</button>
+                                <button type="submit" class="btn btn-primary"><i class="fa fa-user-md"></i>Jual</button>
                             </div>
                         </form>
                     </div>

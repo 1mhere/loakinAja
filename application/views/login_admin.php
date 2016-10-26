@@ -36,7 +36,7 @@
                               </form>
                                 <p class="text-center text-muted">Masuk sebagai <a href="<?php echo base_url()."index.php/user/loginMember" ?>"><strong>Member</strong></a>
                                   atau
-                                    <a href="<?php echo base_url()."index.php/user/loginAdmin" ?>"><strong>Admin</strong></a>.</p>
+                                    <a href="<?php echo base_url()."index.php/mitra/login" ?>"><strong>Mitra</strong></a>.</p>
 
 
                               <p class="text-center text-muted">Belum punya akun?</p>
